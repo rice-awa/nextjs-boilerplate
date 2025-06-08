@@ -1,103 +1,88 @@
-import Image from "next/image";
+import Link from 'next/link';
+import { FaRocket, FaLightbulb, FaUserFriends, FaHeart } from 'react-icons/fa';
 
-export default function Home() {
+export default function WelcomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="flex flex-col gap-16">
+      {/* Hero Section */}
+      <section className="flex flex-col items-center text-center py-16">
+        <div className="relative">
+          <div className="absolute -top-6 -right-6 w-24 h-24 bg-blue-500 rounded-full opacity-20 animate-pulse"></div>
+          <div className="absolute -bottom-6 -left-6 w-20 h-20 bg-purple-500 rounded-full opacity-20 animate-pulse"></div>
+          <h1 className="relative text-5xl sm:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            欢迎来到我的空间
+          </h1>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+        <p className="max-w-2xl text-xl text-blue-100 mb-10">
+          一个简洁、优雅的欢迎页面，专为现代网络体验设计
+        </p>
+        <div className="flex flex-wrap justify-center gap-4">
+          <Link href="#" className="btn btn-lg bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 transition-all">
+            开始探索
+          </Link>
+          <Link href="#" className="btn btn-lg bg-blue-800 hover:bg-blue-700 transition-colors">
+            了解更多
+          </Link>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-12">
+        <h2 className="text-3xl font-bold text-center mb-16 text-blue-50">网站特色</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <FeatureCard 
+            icon={<FaRocket className="text-blue-400" />}
+            title="极速体验"
+            description="基于Next.js的优化性能，提供闪电般的加载速度"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+          <FeatureCard 
+            icon={<FaLightbulb className="text-yellow-400" />}
+            title="现代设计"
+            description="简洁优雅的界面，专注于用户体验"
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
+          <FeatureCard 
+            icon={<FaUserFriends className="text-green-400" />}
+            title="响应式布局"
+            description="完美适配所有设备尺寸，从手机到桌面"
           />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <FeatureCard 
+            icon={<FaHeart className="text-pink-400" />}
+            title="易于定制"
+            description="模块化组件设计，轻松扩展功能"
+          />
+        </div>
+      </section>
+
+      {/* Quote Section */}
+      <section className="py-16">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="text-2xl italic text-blue-100 mb-6">
+            "简洁是复杂的最终形式。这个网站体现了这一理念，将现代技术与优雅设计完美结合。"
+          </div>
+          <div className="text-blue-200">- 网站设计师</div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16">
+        <div className="bg-gradient-to-r from-blue-800 to-purple-900 rounded-2xl p-10 text-center">
+          <h2 className="text-3xl font-bold mb-4">准备好开始了吗？</h2>
+          <p className="max-w-2xl mx-auto text-blue-100 mb-8">
+            加入我们，体验这个简洁而强大的网站模板，为您的项目提供一个完美的起点。
+          </p>
+          <Link href="#" className="btn btn-lg bg-white text-blue-900 hover:bg-blue-100 font-bold">
+            立即开始
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
+
+const FeatureCard = ({ icon, title, description }) => (
+  <div className="bg-blue-800/50 backdrop-blur-sm rounded-xl p-8 hover:bg-blue-800/70 transition-all duration-300 hover:-translate-y-2">
+    <div className="text-4xl mb-4">{icon}</div>
+    <h3 className="text-xl font-bold mb-2 text-blue-50">{title}</h3>
+    <p className="text-blue-200">{description}</p>
+  </div>
+);
